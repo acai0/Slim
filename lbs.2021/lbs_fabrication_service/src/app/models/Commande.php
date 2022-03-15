@@ -1,5 +1,5 @@
 <?php
-namespace lbs\command\app\models;
+namespace lbs\fab\app\models;
 class Commande extends \Illuminate\Database\Eloquent\Model{
     public $table='commande';
     public $primaryKey='id';
@@ -8,7 +8,7 @@ class Commande extends \Illuminate\Database\Eloquent\Model{
     public $timestamps = true;
    
     public function items(){
-        return $this->hasMany('lbs\command\models\Item', 'command_id');
+        return $this->hasMany('lbs\fab\models\Item', 'command_id');
     }
 }
 ?>
