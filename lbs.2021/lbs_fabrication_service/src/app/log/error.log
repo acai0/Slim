@@ -320,3 +320,5 @@
 [2022-03-18T10:00:45.941478+00:00] lbs.log.ERROR: GET http://api.fabrication.local:19680/favicon.ico : malformed uri [] []
 [2022-03-18T10:01:08.440100+00:00] lbs.log.ERROR: GET http://api.fabrication.local:19680/favicon.ico : malformed uri [] []
 [2022-03-18T10:01:37.862210+00:00] lbs.log.ERROR: GET http://api.fabrication.local:19680/favicon.ico : malformed uri [] []
+[2022-03-18T10:04:02.792244+00:00] lbs.log.ERROR: GET http://api.fabrication.local:19680/favicon.ico : malformed uri [] []
+[2022-03-18T10:04:55.106396+00:00] lbs.log.ERROR: GET http://api.fabrication.local:19680/favicon.ico : malformed uri [] []
