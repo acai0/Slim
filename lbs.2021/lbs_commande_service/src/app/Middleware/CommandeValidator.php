@@ -5,7 +5,6 @@ use  \Respect\Validation\Validator as V;
 class CommandeValidator{
 
     public static function create_validators(){
-        //*tableau de validateurs
         return [
             'nom_client' => V::StringType()->alpha(),
             'mail_client' => V::email(),

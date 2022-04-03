@@ -7,12 +7,6 @@ use lbs\fab\app\errors\Writer;
 use lbs\fab\app\models\Commande;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-
-// Le traitement doit procéder à la vérification du token : le système doit vérifier la présence et la valeur du
-// token transmis lors de cette requête. On doit prévoir 2 modes de transport du token :
-// • transport dans l'url,
-// • transport dans un header applicatif.
-
 class Token{
 
     private $c;
@@ -23,23 +17,19 @@ class Token{
 
     public function check(Request $rq, Response $rs, callable $next){
 
-        //check si le token se trouve dans l'uri
         $token = null;
         $token = $rq->getQueryParam('token', null);
 
         if(is_null($token)){
-            //check si le token se trouve dans un header applicatif
             $api_header = $rq->getHeader('X-lbs-token');
             $token = (isset($api_header[0])? $api_header[0] : null);
         }
 
 
         if(empty($token)){
-            //garder trace de l'erreur
             ($this->c->get('logger.error')->error("Missing token in Commande route"));
-            return Writer::json_error($rs,403,"missing token");
+            return Writer::json_error($rs,403,"Missing token");
         }
-        //Get l'id de la commande se trouvant dans la route
         $commande_id = $rq->getAttribute('route')->getArgument('id');
 
         $commande = null;
@@ -52,7 +42,7 @@ class Token{
         
         }
         catch(ModelNotFoundException $e){
-            ($this->c->get('logger.error'))->error("unknown commande");
+            ($this->c->get('logger.error'))->error("Unknown commande");
             return Writer::json_error($rs, 404, "Commande inconnue");
         }
 

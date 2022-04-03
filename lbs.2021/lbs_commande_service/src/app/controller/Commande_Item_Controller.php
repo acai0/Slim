@@ -13,9 +13,6 @@ class Commande_Item_Controller{
     {
         $this->c = $c;
     }
-
-    //TD4.1 associations : récuperer les items correspondant à une commande
-    //GET /commandes/{id}/items
     public function getItems(Request $req, Response $resp, array $args): Response
     {
         $id_commande = $args['id'];
@@ -24,7 +21,6 @@ class Commande_Item_Controller{
         $items = $commande->items()->select('id','libelle','tarif','quantite')->get();
 
 
-        //Construire la réponse
         $reponse = [
             "type" => "collection",
             "count" => $count_items,
@@ -37,6 +33,4 @@ class Commande_Item_Controller{
         $resp->getBody()->write(json_encode($reponse));
         return $resp;
     }
-
-    //*rajouter un message dexception erreur si commande non trouvé
 }

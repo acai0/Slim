@@ -11,17 +11,17 @@ return [
 
     //Logger debug
     'logger.debug' => function(Container $container) {
-        $log = new Logger($container->settings['debug.name']);                  //* Nom du log
-        $log->pushHandler(new StreamHandler($container->settings['debug.log'],     //* Nom du fichier du log
-                                            $container->settings['debug.level'])); //* Niveau de base du log
+        $log = new Logger($container->settings['debug.name']);                  
+        $log->pushHandler(new StreamHandler($container->settings['debug.log'],    
+                                            $container->settings['debug.level'])); 
         return $log;
     },
 
     // logger warn
-    'logger.warn' => function(Container $container) {
-        $log = new Logger($container->settings['warn.name']);                  
-        $log->pushHandler(new StreamHandler($container->settings['warn.log'],     
-                                            $container->settings['warn.level'])); 
+    'logger.warning' => function(Container $container) {
+        $log = new Logger($container->settings['warning.name']);                  
+        $log->pushHandler(new StreamHandler($container->settings['warning.log'],     
+                                            $container->settings['warning.level'])); 
         return $log;
     },
 
